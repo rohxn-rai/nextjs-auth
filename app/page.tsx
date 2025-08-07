@@ -1,5 +1,11 @@
+import { Button } from "@heroui/react";
+
 const LandingHomePage = () => {
-  return <div>LandingHomePage</div>;
+  return (
+    <div>
+      <Button>Click Me!</Button>
+    </div>
+  );
 };
 
 export default LandingHomePage;
