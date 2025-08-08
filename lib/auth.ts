@@ -21,10 +21,18 @@ export const {
     }),
   ],
   callbacks: {
-    async session({ session, token, user }: any) {
-      session.accessToken = token.accessToken;
-
+    async jwt({ token, account }) {
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token?.accessToken) {
+        session.accessToken = token.accessToken as string;
+      }
       return session;
     },
   },
+  trustHost: true,
 });
